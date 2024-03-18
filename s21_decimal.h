@@ -99,7 +99,10 @@ int s21_truncate(s21_decimal value, s21_decimal *result);
 int s21_negate(s21_decimal value, s21_decimal *result);
 void printb(s21_decimal bits_array);
 int div_by_ten(s21_decimal *result);
-void grow_divident(s21_decimal* divident, s21_decimal divident_src,int i);
+void grow_divident_1st(s21_decimal* divident, s21_decimal divident_src,int i);
+void divident_init(s21_decimal* divident, s21_decimal divident_src,int i);
 void nullify(s21_decimal *d);
+int ostatok_into_divident(s21_decimal* , s21_decimal ,int* );
+void put_in_result(s21_decimal* result, int i, s21_decimal divident_src);
 
 #endif  // SRC_S21_DECIMAL_H_

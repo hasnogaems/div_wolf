@@ -26,19 +26,14 @@ int s21_div(s21_decimal divident_src, s21_decimal divisor, s21_decimal *result) 
                     i--;
 
                 }//now divident can be actually substracted from
-                
+    s21_decimal ostatok; nullify(&ostatok);          
 while(s21_is_greater_or_equal(divident, divisor)){
     s21_sub(divident, divisor, &divident);
-    s21_add(*result, one, result);
+    s21_add(*result, one, &ostatok);
     printb(*result);
     
     grow_divident(&divident, divident_src, i);
-    while(s21_is_less(divident, divisor)){
-                    
-                    grow_divident(&divident, divident_src, i);
-                    i--;
-
-                }
+   
 
 }
 // и теперь мы заведем цикл на собственно деление, но если divisor биты будут занимать больше одного инта, то просто делением я не смогу это сделать, надо ведь через вычитание?
@@ -46,7 +41,7 @@ while(s21_is_greater_or_equal(divident, divisor)){
             
         }
         
-        printb(*result);
+       // printb(*result);
     return result_num;
 }
     void grow_divident(s21_decimal* divident, s21_decimal divident_src,int i){
